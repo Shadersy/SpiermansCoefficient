@@ -1,0 +1,51 @@
+public class SpirmansCoefficient {
+
+//Вычисление разницы между элементами двух массивов (по индексу)
+    public double[] SolveDifference(double e1[], double e2[]) {
+       //промежуточная переменная для хранения результата
+        double[] result = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        for (int i = 0; i < e1.length; i++) {
+            if (e1[i] > e2[i]) {
+                result[i] = e1[i] - e2[i];
+            } else
+                result[i] = e2[i] - e1[i];
+
+        }
+
+
+        return result;
+
+    }
+
+
+    //нахождение переменной d, участвующей в нахождении коэффициента Спирмена
+    public double SolveD(double result[]) {
+
+        double d = 0;
+        for(int i = 0; i<result.length; i++){
+            d+=Math.pow(result[i], 2);
+        }
+        return d;
+    }
+
+
+    public double SolveFinnalyCoefficient(double d, int n){
+        double r = 1  - (6*d)/(Math.pow(n, 3) - n );
+        if(r <0.7 && r > 0)
+        {
+            System.out.println("Так как КРК Спирмена не близок к 1, мнения экспертов хорошо согласованы.");
+        }
+        if(r > 0.7 && r <1.0){
+            System.out.println("Так как КРК Спирмена близок к 1, мнения экспертов хорошо согласованы.");
+        }
+        if(r < 0 && r > -1.0)
+        {
+            System.out.println("Строгая обратная связь КРК Спирмена");
+        }
+
+    return r;}
+
+
+}
+
+
